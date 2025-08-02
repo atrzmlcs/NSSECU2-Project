@@ -8,8 +8,19 @@ from datetime import datetime
 target_dir = sys.argv[1] if len(sys.argv) > 1 else '.'
 
 # if you attack these directories, it will not let you attack at all
-DANGER_ZONES = ["/", "/etc", "/home", "/bin", "/usr", "/sys", "/proc", "/var"]
-if any(os.path.abspath(target_dir).startswith(zone) for zone in DANGER_ZONES):
+DANGER_ZONES = [
+    "/", "/etc", "/bin", "/usr",
+    "/sys", "/proc", "/var", "/boot"
+]
+
+target_path = os.path.abspath(target_dir)
+target_path = os.path.normpath(target_path)
+
+if any(
+    target_path == zone or
+    target_path.startswith(zone + os.sep)
+    for zone in DANGER_ZONES
+):
     print("\033[91mCRITICAL ERROR: Never encrypt system folders!\033[0m")
     sys.exit(1)
 
