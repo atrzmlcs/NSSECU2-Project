@@ -4,7 +4,7 @@ from cryptography.fernet import Fernet, InvalidToken
 from datetime import datetime
 
 #uses InvalidToken error handling for extra security measure
-# Prints this message and involve user confirmation before running the encryption code. 
+# Prints this message and involve user confirmation before running the decryption code. 
 print("""\033[92m
 RANSOMWARE SIMULATOR RECOVERY TOOL
 This will decrypt files encrypted by encrypt.py
